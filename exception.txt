@@ -1,0 +1,180 @@
+Exception handling
+===================
+Errors and exception
+errors or exceptions are the faults or mistakes in the code
+or program
+
+Two stages in program execution
+===================================
+compile stage where syntax errors in the code are ched
+
+if any syntax error is there, it does not allow program
+execution.
+print("hello world) => syntax error
+
+Mistakes or faults in the code that arises in the compile
+stage  are errors 
+
+mistakes or faults that arises during program execution
+or program run time(may be due to user input)
+is called as exception.
+
+ZeroDivisionError
+ValueError
+TypeError
+NameError
+FileNotFoundError
+
+try with multiple except blocks 
+===============================
+try:
+	block code
+except Exception1:
+	code
+except Exception2:
+	code
+.
+.
+.
+.
+-------------------------
+try:
+    a=int(input("Enter number:")) #two
+    b=int(input("Enter number:"))
+    d=a/b    #4/zero => ValueError
+    print("Division is:",d)
+except ZeroDivisionError:
+    print("Denominator cannot be zero")
+
+except ValueError:
+    print("wrong input value")
+----------------------------
+
+Exception => parent class
+	-ZeroDivisionError
+	-ValueError
+	-NameError
+	.
+	.
+	ItvedantError
+	.
+--------------------------
+try:
+    a=int(input("Enter number:")) #two
+    b=int(input("Enter number:"))
+    d=a/b    #4/zero => ValueError
+    print("Division is:",d)
+except Exception:
+    print("something went worng")
+
+---------------------------
+finally - 
+	conclusion:
+	1)finally block is executed in both situations
+	when there is exception
+	or no exception
+	
+to save data permanently
+1)DBMS 2)file
+
+code or instruction to close database connection or
+file connection can be written in the finally block
+to save the data.
+try:
+    a=int(input("Enter number:")) #two
+    b=int(input("Enter number:"))
+    d=a/b    #4/zero => ValueError
+    print("Division is:",d)
+except Exception:
+    print("something went worng")
+finally:
+    print("Inside finally block")
+---------------------------------
+
+try-except-else
+=================
+else:
+ else block is executed only when there is no 
+ exception genrated in the try block
+ 
+try:
+    a=int(input("Enter number:")) #two
+    b=int(input("Enter number:"))
+    d=a/b    #4/zero => ValueError
+    
+except Exception:
+    print("something went wrong")
+else:
+    print("Division is:",d)
+
+=> it is recommended that try block should not be 
+overloaded with the statement in which there is no
+chance of getting exception
+so those instructions can be written in the else block
+and they will be executed when there is no exception in the 
+try block
+
+raise exception
+=================
+syntax:
+
+raise ExceptionName("Message")
+
+ex:
+a=int(input("Enter number:")) #two
+b=int(input("Enter number:"))
+
+if b==0:
+    raise ZeroDivisionError("Message here")
+
+d=a/b    #4/zero => ValueError
+print("Division is :",d)
+
+Custom Exception:
+==================
+Exception => parent class
+	-ZeroDivisionError
+	-ValueError
+	-NameError
+	.
+	.
+	ItvedantError
+	
+class ItvedantError(Exception):
+	pass
+
+=>------------------
+class ItvedantError(Exception):
+	pass
+    
+a=int(input("Enter number:")) #two
+b=int(input("Enter number:"))
+
+if b==0:
+    raise ItvedantError("Message here")
+
+d=a/b    #4/zero => ValueError
+print("Division is :",d)
+---------------------------
+
+
+
+ 
+
+define Python user-defined exceptions
+class InvalidAgeException(Exception):
+    "Raised when the input value is less than 18"
+    pass
+
+# you need to guess this number
+number = 18
+
+try:
+    input_num = int(input("Enter a number: "))
+    if input_num < number:
+        raise InvalidAgeException
+    else:
+        print("Eligible to Vote")
+        
+except InvalidAgeException:
+    print("Exception occurred: Invalid Age")

@@ -1,0 +1,36 @@
+What is Encapsulation in Python?
+Encapsulation in Python refers to the practice of bundling data (attributes) and methods (functions)
+ that operate on that data into a single unit called a class. In simpler terms, encapsulation can be compared to packaging items in a box. 
+It protects your classes from accidental changes or deletions and promotes code reusability and maintainability.
+
+class pub_mod:
+    # constructor
+    def __init__(self, name, age):
+        self.name = name;
+        self.age = age;
+ 
+    def Age(self): 
+        # accessing public data member 
+        print("Age: ", self.age)
+# creating object 
+obj = pub_mod("Jason", 35);
+# accessing public data member 
+print("Name: ", obj.name)  
+# calling public member function of the class 
+obj.Age()
+
+*************************************************************
+class Rectangle:
+ 
+  def __init__(self): 
+    #constructor
+    self.__length = 5
+    self.__breadth = 3
+    #printing values of the private variable within the class
+    print(self.__length)
+    print(self.__breadth)
+ 
+rect = Rectangle() #object created 
+#printing values of the private variable outside the class 
+print(rect.length)
+print(rect.breadth)
